@@ -1,0 +1,5 @@
+<app-parent (newChildEvent)="addName($event)"></app-parent>
+
+<ul>
+  <li *ngFor="let name of name">{{ name }}</li>
+</ul>

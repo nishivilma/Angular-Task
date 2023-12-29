@@ -1,0 +1,10 @@
+<!-- <app-child [data]="data"></app-child> -->
+<h3>parent child data passing</h3>
+
+<div>
+  <label for="name"></label>
+  <input type="text" #newNameInput />
+  <button class="btn btn-secondary" (click)="OnAdd(newNameInput.value)">
+    add a Name
+  </button>
+</div>

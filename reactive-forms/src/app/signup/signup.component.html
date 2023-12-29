@@ -1,0 +1,178 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="name">Name :</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                formControlName="name"
+              />
+            </div>
+
+            <div class="invalid" *ngIf="signupForm.get('name')?.errors"></div>
+
+            <div
+              class="invalid"
+              *ngIf="
+                signupForm.get('name')?.touched &&
+                signupForm.get('name')?.hasError('required')
+              "
+            >
+              *Name is required
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="email">Email :</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+              />
+              <div
+                class="invalid"
+                *ngIf="signupForm.get('email')?.errors"
+              ></div>
+            </div>
+            <div
+              class="invalid"
+              *ngIf="
+                signupForm.get('email')?.touched &&
+                signupForm.get('email')?.hasError('required')
+              "
+            >
+              *Email is required
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="number">Phone Number :</label>
+              <input
+                type="number"
+                id="number"
+                class="form-control"
+                formControlName="number"
+              />
+            </div>
+            <div
+              class="invalid"
+              *ngIf="
+                signupForm.get('number')?.touched &&
+                signupForm.get('number')?.hasError('required')
+              "
+            >
+              *PhoneNumber is required
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="date">DOB :</label>
+              <input
+                type="date"
+                id="date"
+                class="form-control"
+                formControlName="date"
+              />
+              <div class="invalid" *ngIf="signupForm.get('date')?.errors"></div>
+            </div>
+            <div
+              class="invalid"
+              *ngIf="
+                signupForm.get('date')?.touched &&
+                signupForm.get('date')?.hasError('required')
+              "
+            >
+              *DOB is required
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="password">Password :</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+              />
+            </div>
+            <div
+              class="invalid"
+              *ngIf="signupForm.get('password')?.errors?.['pattern']"
+            >
+              invalid password
+            </div>
+            <div
+              class="invalid"
+              *ngIf="
+                signupForm.get('password')?.touched &&
+                signupForm.get('password')?.hasError('required')
+              "
+            >
+              *password is required
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="confirm Password">confirmPassword :</label>
+              <input
+                type="confirmPassword"
+                id="confirmPassword"
+                class="form-control"
+                formControlName="confirmPassword"
+              />
+            </div>
+            <div
+              class="invalid"
+              *ngIf="
+                signupForm.get('confirmPassword')?.touched &&
+                signupForm.get('confirmPassword')?.hasError('required')
+              "
+            >
+              *confirmPassword is required
+            </div>
+            <div
+              class="invalid"
+              *ngIf="signupForm.get('confirmPassword')?.errors?.['mustMatch']"
+            >
+              password must match
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+              Signup
+            </button>
+            <button type="reset" class="btn btn-secondary">reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

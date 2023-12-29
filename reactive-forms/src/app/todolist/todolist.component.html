@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="card-row">
+    <div class="card-header">
+      <h1>My Task List</h1>
+    </div>
+    <div class="card-body">
+      <form action="">
+        <input
+          class="form-control"
+          type="text"
+          name="myTask"
+          id="myTask"
+          [(ngModel)]="myTask"
+        />
+
+        <button class="btn btn-primary my-3" type="submit" (click)="addTodo()">
+          Add Task
+        </button>
+      </form>
+    </div>
+    <div class="card-body">
+      <h2 *ngIf="taskList.length">My Task ({{ taskList.length }})</h2>
+      <h2 *ngIf="!taskList.length">No task availble..</h2>
+
+      <input
+        placeholder="search..."
+        type="text"
+        class="form-control"
+        name="taskSearch"
+        [(ngModel)]="searchText"
+      />
+      <ul>
+        <li
+          class="d-flex my-3 py-3 px-3"
+          *ngFor="let task of taskList | search : searchText; let i = index"
+        >
+          <!-- <div *ngIf="i !== editingTaskIndex">{{ task }}</div>
+          <div *ngIf="i == editingTaskIndex">
+            <input [(ngModel)]="editingTask" class="form-control" />
+          </div> -->
+
+          <ng-container *ngIf="i !== editingTaskIndex; else editTask">
+            {{ task }}
+
+            <button class="btn btn-outline-danger" (click)="remove(i)">
+              Delete
+            </button>
+            <button class="btn btn-outline-info" (click)="edit(i)">Edit</button>
+          </ng-container>
+          <!-- <button
+            class="btn btn-outline-success"
+            (click)="UpdateTask()"
+            *ngIf="i == editingTaskIndex"
+          >
+            Update
+          </button> -->
+          <ng-template #editTask>
+            <input [(ngModel)]="taskList[i]" class="form-control" />
+            <button class="btn btn-outline-danger" (click)="UpdateTask(i)">
+              Update
+            </button>
+            <button class="btn btn-outline-danger" (click)="cancel()">
+              cancel
+            </button>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

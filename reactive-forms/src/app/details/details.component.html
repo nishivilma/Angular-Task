@@ -1,0 +1,24 @@
+<h3>DATA</h3>
+<p>Username:{{ formValues.name }}</p>
+<p>Email:{{ formValues.email }}</p>
+<p>phone number:{{ formValues.number }}</p>
+<p>dob:{{ formValues.date }}</p>
+<p>password:{{ formValues.password }}</p>
+<div class="row">
+  <div class="col-xs-12">
+    <button type="submit" class="btn btn-primary" (click)="OnTask()">
+      Task
+    </button>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary" (click)="onTodo()">
+      To-Do List
+    </button>
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-primary" (click)="OnDrop()">
+      DropDown
+    </button>
+  </div>
+</div>
